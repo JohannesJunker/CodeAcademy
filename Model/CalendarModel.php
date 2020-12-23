@@ -1,11 +1,11 @@
 <?php
 require ("Entities/CaldendarDbEntity.php");
-//testcommit
+//anotherTestcommit
 //Contains database related code for the page.
 class CalendarModel 
 {
     //Example function
-function GetCalendarTypes()
+function GetCalendartypes()
 {
     require 'Credentials.php';
     
