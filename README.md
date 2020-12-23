@@ -1,0 +1,4 @@
+Used Technologies:
+
+- Netbean
+- mySQ
