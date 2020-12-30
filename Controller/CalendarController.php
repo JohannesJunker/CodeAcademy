@@ -12,7 +12,7 @@ class CalendarController
                     <select name ='months'>
                         <select name = 'types' >
                         <option value = '%' >All</option>
-                        " . $todo.
+                        " .$this->CreateOptionValues($calendarModel->GetCalendarMonths()).
                 "</select>
                      <input type = 'submit' value = 'Search' />
                     </form>";
@@ -31,14 +31,14 @@ class CalendarController
         return $result;
     }
     
-    function CreateCoffeeTables($types)
+    function CreateCalendarTables($months)
     {
-        $coffeeModel = new CoffeeModel();
-        $coffeeArray = $coffeeModel->GetCoffeeByType($types);
+        $CalendarModel = new CalendarModel();
+        $calendarArray = $calendarModel->GetCalendarMonths($months);
         $result = "";
         
-        //Generate a coffeeTable for each coffeeEntity in array
-        foreach ($coffeeArray as $key => $coffee) 
+        //Generate a CalendarTable for each MonthEntity in array
+        foreach ($calendarArray as $key => $months) 
         {
             $result = $result .
                     "<table class = 'coffeeTable'>

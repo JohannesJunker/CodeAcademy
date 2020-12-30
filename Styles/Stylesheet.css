@@ -30,7 +30,7 @@ body p
 
 #content_area
 {
-    float: left;
+    float: right;
     width: 750px;
     margin: 20px 0 20px 0;
     padding: 10px;
@@ -38,12 +38,16 @@ body p
 
 #sidebar
 {
-    float: right;
-    width: 250px;
+    float: left;
     height: 400px;
-    margin: 20px 10px;
-    padding: 10px;
-    border: 2px solid #E3E3E3;
+    text-decoration: none;
+    
+}
+
+#sidebar li 
+{
+    text-decoration: none;
+    
 }
 
 footer
@@ -85,8 +89,8 @@ footer
 {
     font-size: 24px;
     float: left;
+    margin-right: 40px;
     position: relative;
-    width: 180px;
     height: 50px;
 }
 
@@ -118,4 +122,10 @@ footer
     height: 250px;
     margin: 0px 0 10px 10px;
     padding: 10px;
+}
+
+
+
+table, th, td {
+  border: 1px solid black;
 }

@@ -12,10 +12,9 @@
             
             <nav id="navigation">
                 <ul id="nav">
-                    <li><a href="index.php">Show Calendar</a></li>
-                    <li><a href="#">getEvent</a></li>
-                    <li><a href="#">SafeEvent</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="calendar.php">Show Calendar</a></li>
+                    <li><a href="Events.php">show Events</a></li>
+                    <li><a href="GetEvent.php">add Event to Calendar</a></li>
                 </ul>
             </nav>
             
@@ -23,9 +22,16 @@
                 <?php echo $content; ?>
             </div>
             
-            <div id="sidebar">
-                
-            </div>
+            <div id="sidebar"> 
+                <?php
+               
+                     echo $sidebar;
+              
+               
+               
+                ?>
+                    
+           </div>
             
             <footer>
                 <p>All rights reserved</p>

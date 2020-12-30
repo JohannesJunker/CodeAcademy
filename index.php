@@ -8,6 +8,7 @@ $content = '<img src="Images/SR-logo-website.png" class="imgLeft" />
 $sql = "select * from events;"; 
 </p>
 ';
-//include 'calendar.php';
+//include 'calendar.php'
+$sidebar = "";
 include 'Template.php';
 ?>
