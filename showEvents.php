@@ -22,9 +22,9 @@ $conn->close();
 
 $sidebar =  '<ul id="sidebar">
            
-                        <li><a href="InsertValue.php">football</a></li>
-                        <li><a href="02_february.php">baseball</a></li>
-                        <li><a href="03_march.php">ice_hockey</a></li>
+                        <li><a href="football_events.php">football</a></li>
+                        <li><a href="iceHockey_events.php">baseball</a></li>
+                        <li><a href="baseball_events">ice_hockey</a></li>
                 </ul>';
 include 'Template.php';
 ?>
