@@ -1,0 +1,102 @@
+-- table for storing data for a calendar
+DROP TABLE IF EXISTS calendar_dates;
+CREATE TABLE calendar_dates (
+        id                      INTEGER PRIMARY KEY,  -- year*10000+month*100+day
+        db_date                 DATE NOT NULL,
+        year                    INTEGER NOT NULL,
+        month                   INTEGER NOT NULL, -- 1 to 12
+        day                     INTEGER NOT NULL, -- 1 to 31
+        week                    INTEGER NOT NULL, -- 1 to 52/53
+        day_name                VARCHAR(9) NOT NULL, -- 'Monday', 'Tuesday'...
+        month_name              VARCHAR(9) NOT NULL, -- 'January', 'February'...
+        event                   VARCHAR(50),
+        UNIQUE td_ymd_idx (year,month,day),
+        UNIQUE td_dbdate_idx (db_date)
+
+);
+
+
+-- create stored procedure for auto-fill initial data in calendar_dates
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fill_calendar_dates`(IN startdate DATE,IN stopdate DATE)
+BEGIN
+    DECLARE currentdate DATE;
+    SET currentdate = startdate;
+    WHILE currentdate < stopdate DO
+        INSERT INTO calendar_dates VALUES (
+                        YEAR(currentdate)*10000+MONTH(currentdate)*100 + DAY(currentdate),
+                        currentdate,
+                        YEAR(currentdate),
+                        MONTH(currentdate),
+                        DAY(currentdate),
+                        WEEKOFYEAR(currentdate),
+                        DATE_FORMAT(currentdate,'%W'),
+                        DATE_FORMAT(currentdate,'%M'),
+                        NULL);
+        SET currentdate = ADDDATE(currentdate,INTERVAL 1 DAY);
+    END WHILE;
+END
+
+-- insert auto fill data of calendar_dates 
+TRUNCATE TABLE calendar_dates;
+CALL fill_calendar_dates('2020-01-01','2022-01-01'); -- set timerange of the calendar, in this case 2 years
+OPTIMIZE TABLE calendar_dates;
+-------------------------------------------------------------------------------------------------------------
+
+-- talbe for storing events, events have to be inserted manually 
+DROP TABLE IF EXISTS events;
+CREATE TABLE events (
+        id                      INTEGER PRIMARY KEY NOT NULL AUTO_increment, -- '1', '2'....
+        db_date                 DATE NOT NULL,
+        starttime            	TIME NOT NULL, -- '18:30:00'
+        endtime               	TIME NOT NULL, -- '20:30:00'
+        category             	VARCHAR(100) NOT NULL, -- 'Veltins_Arena'
+        team_a               	VARCHAR(100) NOT NULL, -- 'real_madrid'...
+        team_b                	VARCHAR(100) NOT NULL, -- 'bayern_muenchen'...
+        location              	VARCHAR(100) NOT NULL -- 'St_gallen', 'Wien'...
+        
+);
+
+
+-- insert some Eventdata
+
+-- football
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-02-01", "15:30:00", "17:15:00",'Football','TSG Hoffenheim ', 'Freiburg', 'Prezero-Arena');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-01-09", "15:30:00", "17:15:00",'Football','Freiburg', 'köln', 'Schwarzwaldstadion');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-04-01", "15:30:00", "17:15:00",'Football','Bayern', 'freiburg', 'Allianz_Arena');
+
+
+-- baseball
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-01-09", "15:30:00", "17:15:00",'baseball','Tampa_Bay_Rays', 'Oakland_Athletics', 'tampa-Arena');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-01-17", "15:30:00", "17:15:00",'baseball','Oakland_Athletics', 'Tampa_Bay_Rays', 'Okaland-Arena');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-01-09", "15:30:00", "17:15:00",'baseball','chicargo_White_Sox', 'Toronto_Blue_Jays', 'Chicargo-Arena');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-03-03", "15:30:00", "17:15:00",'baseball','Toronto_Blue_Jays', 'chicargo_White_Sox', 'Toronto-Arena');
+
+
+-- ice_hockey
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-01-28", "15:30:00", "17:15:00",'ice_hockey','Columbus_Blue_Jackets', 'New_Jerey_devils', 'New_jersy-Arena');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-01-22", "15:30:00", "17:15:00",'ice_hockey','Toronto_Blue_Jays', 'Columbus_Blue_Jackets', 'Toronto-Arena');
+
+insert into events (db_date,starttime, endtime, category, team_a, team_b,location)
+values ("2020-02-14", "15:30:00", "17:15:00",'ice_hockey','New_Jerey_devils', 'chicargo_White_Sox', 'New_jersey-Arena');
+
+
+-- end of create_db_schema
+
+
+
+
