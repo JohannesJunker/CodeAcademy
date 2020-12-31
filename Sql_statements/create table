@@ -1,0 +1,57 @@
+-- table witch stores data for a calendar
+
+DROP TABLE IF EXISTS calendar_dates;
+CREATE TABLE calendar_dates (
+        id                      INTEGER PRIMARY KEY,  -- year*10000+month*100+day
+        db_date                 DATE NOT NULL,
+        year                    INTEGER NOT NULL,
+        month                   INTEGER NOT NULL, -- 1 to 12
+        day                     INTEGER NOT NULL, -- 1 to 31
+        week                    INTEGER NOT NULL, -- 1 to 52/53
+        day_name                VARCHAR(9) NOT NULL, -- 'Monday', 'Tuesday'...
+        month_name              VARCHAR(9) NOT NULL, -- 'January', 'February'...
+        event                   VARCHAR(50),
+        UNIQUE td_ymd_idx (year,month,day),
+        UNIQUE td_dbdate_idx (db_date)
+
+);
+
+
+-- insert data of calendar_dates 
+
+TRUNCATE TABLE calendar_dates;
+CALL fill_calendar_dates('2020-01-01','2022-01-01'); -- displays the timerange of the calendar
+OPTIMIZE TABLE calendar_dates;
+
+
+-- talbe witch stores events, events have to be inserted manually 
+
+DROP TABLE IF EXISTS events;
+CREATE TABLE events (
+        id                      INTEGER PRIMARY KEY, -- '1', '2'..... should be an Auto-inkrement
+        db_date                 DATE NOT NULL,
+        starttime            	TIME NOT NULL, -- '18:30:00'
+        endtime               	TIME NOT NULL, -- '20:30:00'
+        category             	VARCHAR(100) NOT NULL, -- 'Veltins_Arena'
+        team_a               	VARCHAR(100) NOT NULL, -- 'real_madrid'...
+        team_b                	VARCHAR(100) NOT NULL, -- 'bayern_muenchen'...
+        location              	VARCHAR(100) NOT NULL -- 'St_gallen', 'Wien'...
+        
+);
+
+
+-- insert some Eventdata, as i support SC Freiburg, only Games of SC Freiburg will displayed
+
+insert into events 
+values (1, "2020-02-01", "15:30:00", "17:15:00",'Football','TSG Hoffenheim ', 'Freiburg', 'Prezero-Arena');
+
+insert into events 
+values (2, "2020-09-01", "15:30:00", "17:15:00",'Football','Freiburg', 'köln', 'Schwarzwaldstadion');
+
+insert into events 
+values (3, "2020-17-01", "15:30:00", "17:15:00",'Football','Bayern', 'freiburg', 'Allianz_Arena');
+
+
+
+
+
