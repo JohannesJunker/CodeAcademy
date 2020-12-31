@@ -1,13 +1,14 @@
 <?php
+
 $content= '<table>
-<h3>Upcomming Events in ice_hockey</h3>';    
+<h3>Upcomming Events</h3>';    
 
 $conn = mysqli_connect("localhost", "root", "", "testing");
 // Check connection
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT* from events where category like '%ice%'";
+$sql = "SELECT* from events order by db_date limit 4";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
@@ -20,10 +21,11 @@ $content = $content . "</table>";
 $conn->close();
 
 $sidebar =  '<ul id="sidebar">
-       <h3>Select league</h3>    
-                        <li><a href="#todo">Germany</a></li>
-                        <li><a href="#todo">Spain</a></li>
-                        <li><a href="#todo">England</a></li>
+           
+                        <li><a href="football_events.php">football</a></li>
+                        <li><a href="baseball_events.php">baseball</a></li>
+                        <li><a href="icehockey_events.php">ice_hockey</a></li>
                 </ul>';
 include 'Template.php';
 ?>
+
