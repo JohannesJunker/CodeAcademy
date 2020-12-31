@@ -8,7 +8,7 @@ $conn = mysqli_connect("localhost", "root", "", "testing");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT* from events";
+$sql = "SELECT* from events order by db_date limit 4";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row

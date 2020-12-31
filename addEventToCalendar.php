@@ -9,7 +9,8 @@ die("Connection failed: " . $conn->connect_error);
 $sql = "select a.db_date, starttime, endtime, category,team_a, team_b, location 
 from calendar_dates a, events b
 where a.db_date=b.db_date
-order by db_date asc;" ;
+order by db_date asc
+limit 5;" ;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
