@@ -13,8 +13,8 @@
             <nav id="navigation">
                 <ul id="nav">
                     <li><a href="calendar.php">Show Calendar</a></li>
-                    <li><a href="Events.php">show Events</a></li>
-                    <li><a href="GetEvent.php">add Event to Calendar</a></li>
+                    <li><a href="showEvents.php">show Events</a></li>
+                    <li><a href="addEventToCalendar.php">add Event to Calendar</a></li>
                 </ul>
             </nav>
             
@@ -24,11 +24,9 @@
             
             <div id="sidebar"> 
                 <?php
-               
-                     echo $sidebar;
-              
-               
-               
+
+                       echo $sidebar;
+
                 ?>
                     
            </div>

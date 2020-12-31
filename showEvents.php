@@ -1,4 +1,8 @@
 <?php
+
+$content= '<table>
+<h3>Upcomming Events</h3>';    
+
 $conn = mysqli_connect("localhost", "root", "", "testing");
 // Check connection
 if ($conn->connect_error) {
@@ -16,6 +20,12 @@ $content = $content . "</table>";
 } else { echo "0 results"; }
 $conn->close();
 
-$sidebar ="";
+$sidebar =  '<ul id="sidebar">
+           
+                        <li><a href="InsertValue.php">football</a></li>
+                        <li><a href="02_february.php">baseball</a></li>
+                        <li><a href="03_march.php">ice_hockey</a></li>
+                </ul>';
 include 'Template.php';
 ?>
+
