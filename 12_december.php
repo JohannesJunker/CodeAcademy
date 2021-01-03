@@ -6,12 +6,12 @@ $conn = mysqli_connect("localhost", "root", "", "testing");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT db_date, day_name,event from calendar_dates where month =7 and year =2020 order by db_date asc";
+$sql = "SELECT db_date, day_name from calendar_dates where month =7 and year =2020 order by db_date asc";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-$content=$content . "</tr><td>" . $row["db_date"] . "</td><td>" . $row["day_name"] . "</td><td>" . $row["event"] . "</td><tr>";
+$content=$content . "</tr><td>" . $row["db_date"] . "</td><td>" . $row["day_name"] . "</td><tr>" ;
 }
 $content = $content . "</table>";
 } else { echo "0 results"; }
