@@ -1,4 +1,4 @@
-##1. Coding Exercise
+#1. Coding Exercise
 Goal is to implement a calendar for sport events. Events may be added to the calendar and it
 should be possible to categorize the events based on sports.
 Examples:
@@ -6,19 +6,19 @@ Examples:
  Sun., 23.10.2019, 09:45, Ice Hockey, KAC - Capitals
 
 
-2. Task 1 - Modelling:
+#2. Task 1 - Modelling:
 Start with identifying the database entities and then create a suitable database diagram (ERD).
 For the Calendar i created two tables. One Table "calendar dates"  with Calendar information and placeholder for the Event information.
 the other table "Events" contains event information.
 ![ERD](https://github.com/JohannesJunker/CodeAcademy/blob/master/ERM-sheets/ERD-Calendar.png)
 
-3. Task 2 – DB Structure/Data:
+#3. Task 2 – DB Structure/Data:
 For the creation of the database i used mySQL workbench. 
 With a stored procedure i filled the calendar with date information.
 Becauce of the placeholder, you can insert Events with update statements into the "calendar dates" table.
 All files about the database are in the folder "sql_statements".
 
-4. Task 3 – HTML/PHP:
+#4. Task 3 – HTML/PHP:
 
 Structure:
 The index.php displays the structure of the calendar website.
