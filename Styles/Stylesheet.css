@@ -124,8 +124,17 @@ footer
     padding: 10px;
 }
 
-
+input{
+     width : 40%;
+     height: 5%;
+     border:1px;
+     border-radius: 05px;
+     padding : 8px 15px 8px 15px;
+     margin: 10px 0px 15px 0px;
+     box-shadow: 1px 1px 2px 1px grey;
+   }
 
 table, th, td {
-  border: 1px solid black;
+    min-width: 50px;
+    border: 1px solid black;
 }

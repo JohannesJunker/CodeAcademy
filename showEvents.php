@@ -1,8 +1,18 @@
 <?php
-
-$content= '<table>
-<h3>Upcomming Events</h3>';    
-
+$content= 
+        "<h3>Upcomming Events</h3>".   
+        "<table> "
+        . "<tr>"
+            . "<td> id </td>"
+            . "<td> Datum </td>"
+            . "<td> starttime</td>"
+            . "<td> endtime</td>"
+            . "<td>category</td>"
+            . "<td>team_a</td>"
+            . "<td>team_b</td>"
+            . "<td>location</td>"
+        . "</tr>"
+;
 $conn = mysqli_connect("localhost", "root", "", "testing");
 // Check connection
 if ($conn->connect_error) {

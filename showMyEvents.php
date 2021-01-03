@@ -1,6 +1,6 @@
 <?php
-
-$content= "<table>";
+include 'tableHead.php';
+$content= $tableHead;
 $conn = mysqli_connect("localhost", "root", "", "testing");
 // Check connection
 if ($conn->connect_error) {

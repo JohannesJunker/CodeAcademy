@@ -1,24 +1,6 @@
-<html>
 
-<head>
-<title>updation</title>
- <style> 
-  body{
-   background-color:whitesmoke;
-   }
-  input{
-     width : 40%;
-     height: 5%;
-     border:1px;
-     border-radius: 05px;
-     padding : 8px 15px 8px 15px;
-     margin: 10px 0px 15px 0px;
-     box-shadow: 1px 1px 2px 1px grey;
-   }
- </style>
-</head>
-<body>
-     <center> 
+<?php
+$content= '
       <h1>Add Event to your calendar</h1>
    
       <form action="addEventToCalendar.php" method="POST">
@@ -31,17 +13,8 @@
     <input type="text" name="location" placeholder="Enter location"/></br>
     
     <input type="submit" name="update" value="UPDATE Data"/>
-   </form>
+   </form>';
   
-  </center>
-</body>
-</html>
-
-
-
-
-<?php
-
 $conn = mysqli_connect("localhost", "root", "", "testing");
 $db = mysqli_select_db($conn,'testing');
 
@@ -74,6 +47,9 @@ if(isset($_POST['update']))
     echo '<script type = "text/javascript"> alert("Data_Not_Updated")</script>';
    }
  }
+ $sidebar="";
+ 
+ include 'Template.php';
 ?>
 
 
