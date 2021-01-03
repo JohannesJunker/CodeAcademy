@@ -1,24 +1,24 @@
-#1 Coding Exercise
+1 Coding Exercise
 Goal is to implement a calendar for sport events. Events may be added to the calendar and it
 should be possible to categorize the events based on sports.
 Examples:
- Sat., 18.07.2019, 18:30, Football, Salzburg – Sturm
- Sun., 23.10.2019, 09:45, Ice Hockey, KAC - Capitals
+ Sat., 18.07.2019, 18:30, Football, Salzburg – Sturm
+ Sun., 23.10.2019, 09:45, Ice Hockey, KAC - Capitals
 
 
-#2. Task 1 - Modelling:
+2. Task 1 - Modelling:
 Start with identifying the database entities and then create a suitable database diagram (ERD).
-For the Calendar i created two tables. One Table "calendar dates"  with Calendar information and placeholder for the Event information.
+For the Calendar i created two tables. One Table "calendar"  with Calendar information and placeholder for the Event information.
 the other table "Events" contains event information.
 ![ERD](https://github.com/JohannesJunker/CodeAcademy/blob/master/ERM-sheets/ERD-Calendar.png)
 
-#3. Task 2 – DB Structure/Data:
+3. Task 2 – DB Structure/Data:
 For the creation of the database i used mySQL workbench. 
 With a stored procedure i filled the calendar with date information.
 Becauce of the placeholder, you can insert Events with update statements into the "calendar dates" table.
 All files about the database are in the folder "sql_statements".
 
-#4. Task 3 – HTML/PHP:
+4. Task 3 – HTML/PHP:
 
 Structure:
 The index.php displays the structure of the calendar website.
@@ -36,5 +36,8 @@ The "add Event" to Calendar calls the file "addEventToCalendar.php" where you ca
 The event will be displayed with the click of the button "My Events" or in the showed calendar information in the respective month.  
 ![add_events](https://github.com/JohannesJunker/CodeAcademy/blob/master/Images/add_events.png)
 
- 
+I have worked with php for the first time, it took me quiet a time to dive into this subject. I really enjoyed this task and look forward to discuss my results with you.
 
+Kind regards
+
+Johannes Junker.
