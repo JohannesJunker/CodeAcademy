@@ -15,6 +15,7 @@
                     <li><a href="calendar.php">Show Calendar</a></li>
                     <li><a href="showEvents.php">show Events</a></li>
                     <li><a href="addEventToCalendar.php">add Event to Calendar</a></li>
+                    <li><a href="showMyEvents.php">My Events</a></li>
                 </ul>
             </nav>
             

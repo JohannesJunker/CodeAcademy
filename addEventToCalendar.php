@@ -1,53 +1,79 @@
+<html>
+
+<head>
+<title>updation</title>
+ <style> 
+  body{
+   background-color:whitesmoke;
+   }
+  input{
+     width : 40%;
+     height: 5%;
+     border:1px;
+     border-radius: 05px;
+     padding : 8px 15px 8px 15px;
+     margin: 10px 0px 15px 0px;
+     box-shadow: 1px 1px 2px 1px grey;
+   }
+ </style>
+</head>
+<body>
+     <center> 
+      <h1>Add Event to your calendar</h1>
+   
+      <form action="addEventToCalendar.php" method="POST">
+    <input type="date" name="db_date" placeholder="Enter date in Format YYYY-MM-DD "/></br>
+    <input type="time" name="starttime" placeholder="Enter Beginning for example 15:30:00"/></br>
+    <input type="time" name="endtime" placeholder="Enter End for example 18:30:00"/></br>
+    <input type="text" name="category" placeholder="Enter category of Sport"/></br>
+    <input type="text" name="team_a" placeholder="Enter team_a"/></br>
+    <input type="text" name="team_b" placeholder="Enter team_b"/></br>
+    <input type="text" name="location" placeholder="Enter location"/></br>
+    
+    <input type="submit" name="update" value="UPDATE Data"/>
+   </form>
+  
+  </center>
+</body>
+</html>
+
+
+
+
 <?php
 
-$content= "<table>";
 $conn = mysqli_connect("localhost", "root", "", "testing");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "select a.db_date, starttime, endtime, category,team_a, team_b, location 
-from calendar_dates a, events b
-where a.db_date=b.db_date
-order by db_date asc
-limit 5;" ;
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-$content=$content . "<tr><td>" . $row["db_date"]. "</td><td>" . $row["starttime"] . "</td><td>". $row["endtime"] . "</td><td>". $row["category"] . "</td><td>". $row["team_a"] . "</td><td>". $row["team_b"] . "</td><td>". $row["location"] . "</td><tr>";
-}
-$content = $content . "</table>";
-} else { echo "0 results"; }
-$conn->close();
-
-$sidebar ='"";
-<html>
-<head>
-        <title>Insert form value into database</title>
-</head>
-    <body>
-        <form action="insertIntoDatabase.php" method="post"> 
-        
-            <label>db_date:</label><input type ="date" name ="db_name"><br>
-            <label>starttime:</label><input type ="time" name ="starttime"><br>
-            <label>endtime:</label><input type ="time" name ="endtime"><br>
-            <label>category:</label><input type ="text" name ="category"><br>
-            <label>team_a:</label><input type ="text" name ="team_a"><br>
-            <label>team_b:</label><input type ="text" name ="team_b"><br>
-            <label>location:</label><input type ="text" name ="location"><br> 
-            
-            <button type ="submit" name ="submit">Submit</button>
-      
-         </form>
-
-    </body>
-</html>
-';
+$db = mysqli_select_db($conn,'testing');
 
 
-include 'Template.php';
+if(isset($_POST['update']))
+{
+    
+        $db_date = $_POST ['db_date'] ;
+        $starttime = $_POST ['starttime'] ;
+        $endtime = $_POST ['endtime'] ;
+        $category = $_POST ['category'] ;
+        $team_a = $_POST ['team_a'] ;
+        $team_b = $_POST ['team_b'] ;
+        $location = $_POST ['location'] ;
+     
+  
+     $query = "UPDATE calendar_dates SET starttime='$_POST[starttime]', endtime='$_POST[endtime]', category='$_POST[category]', team_a='$_POST[team_a]', team_b='$_POST[team_b]', location='$_POST[location]' where db_date='$_POST[db_date]' ";
+   
+ 
+     $query_run = mysqli_query($conn, $query) or die (mysqli_error($conn));
+     
+   
+     
+     if($query_run)
+   {
+    echo '<script type = "text/javascript"> alert("Data_Updated")</script>';
+   }
+  else
+   {
+    echo '<script type = "text/javascript"> alert("Data_Not_Updated")</script>';
+   }
+ }
 ?>
-
 
 
