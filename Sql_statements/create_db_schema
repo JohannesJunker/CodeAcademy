@@ -9,13 +9,13 @@ CREATE TABLE calendar_dates (
         week                    INTEGER NOT NULL, -- 1 to 52/53
         day_name                VARCHAR(9) NOT NULL, -- 'Monday', 'Tuesday'...
         month_name              VARCHAR(9) NOT NULL, -- 'January', 'February'...
-		id_event				varchar(59),
+	id_event				varchar(59),
         starttime 				time,
         endtime					time,
         category 				varchar(59),
-		team_a 					varchar(59),
-		team_b	 				varchar(59),
-		Location 				varchar(59),
+	team_a 					varchar(59),
+	team_b	 				varchar(59),
+	Location 				varchar(59),
         UNIQUE td_ymd_idx (year,month,day),
         UNIQUE td_dbdate_idx (db_date)
 
@@ -39,7 +39,7 @@ BEGIN
                         DATE_FORMAT(currentdate,'%W'),
                         DATE_FORMAT(currentdate,'%M'),
                         NULL,
-						NULL,
+			NULL,
                         null,
                         null,
                         null,
